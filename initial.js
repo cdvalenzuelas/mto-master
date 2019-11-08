@@ -4,13 +4,15 @@ import { specs, jointTypes } from './common'
 
 let data = readFile('./data.xlsx')
 
-let fasteners1 = xlsx.utils.sheet_to_json(data.Sheets['fasteners'])
-let pipeComponents1 = xlsx.utils.sheet_to_json(data.Sheets['pipeComponents'])
-let structures1 = xlsx.utils.sheet_to_json(data.Sheets['structureMembers'])
-let pipes1 = xlsx.utils.sheet_to_json(data.Sheets['pipes'])
+const readSheet = sheetName => xlsx.utils.sheet_to_json(data.Sheets[sheetName])
+
+let fasteners1 = readSheet('fasteners')
+let pipeComponents1 = readSheet('pipeComponents')
+let structures1 = readSheet('structureMembers')
+let pipes1 = readSheet('pipes')
 
 pipeComponents1 = pipeComponents1.filter(item => {
-    const item2 = {...item}
+    const item2 = { ...item }
     item2['Short Description'] = item2['Short Description'].toUpperCase();
     if(!item2['Short Description'].startsWith('PIPE')){        
         return item2
