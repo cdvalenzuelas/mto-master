@@ -2,12 +2,7 @@
   "name": "ejemplo",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/node": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
-    "xlsx": "^0.15.1"
-  },
+  "dependencies": {},
   "scripts": {
     "start": "babel-node index.js",
     "prueba": "babel-node prueba.js"
@@ -25,5 +20,10 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "xlsx": "^0.15.2"
+  }
 }

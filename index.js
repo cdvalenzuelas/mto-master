@@ -7,6 +7,8 @@ import { welds, threads, bolts, gaskets } from './fasteners'
 import { elbows, flanges, tees, reducers, olets, valves, pipes, miscelanius, unions } from './pipeComponents'
 import grouping from './grouping'
 
+olets.forEach(item => console.log(item.description))
+
 // Generación de Tapweld en función de los olets
 const tapwelds = olets.map(item => {
     const item2 = {...item}

@@ -15,7 +15,7 @@ const unions = [];
 //Genera un arreglo con los elementos que no pertenecen al spec del proyecto o que no sean elementos nuevos o si no tienen unidad de peso establecida
 pipeComponents.forEach(item => { 
 
-    let { length } = item
+    let { length, cutLength } = item
 
     const {   
         unit,      
@@ -53,16 +53,17 @@ pipeComponents.forEach(item => {
         valves.push(pipeComponent)
     } else if (shortDescription === 'UNION'){
         unions.push(pipeComponent)        
-    } else if (shortDescription.startsWith('PIPE')){ 
+    } else if (shortDescription.startsWith('PIPE')){ 				
         pipeComponent.unit = 'M.L';  
-        length = length/1000
-        pipeComponent.quantity = Number(length.toFixed(2))              
-        pipeComponent.weight = weight*pipeComponent.quantity 
+        const length2 = cutLength/1000
+        pipeComponent.quantity = Number(length2.toFixed(2))              
+        pipeComponent.weight = weight*Number(length2.toFixed(2))
         pipeComponent.momentX = pipeComponent.weight*x;
         pipeComponent.momentY = pipeComponent.weight*y;
         pipeComponent.momentZ = pipeComponent.weight*z;           
         pipes.push(pipeComponent)
     } else{        
+				//console.log(pipeComponent)
         miscelanius.push(pipeComponent)
     }      
 })
