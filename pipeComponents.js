@@ -42,11 +42,14 @@ pipeComponents.forEach(item => {
         elbows.push(pipeComponent)
     } else if (shortDescription.startsWith('FLANGE')){                       
         flanges.push(pipeComponent)
-    } else if (shortDescription.startsWith('TEE')){            
+    } else if (shortDescription.startsWith('TEE')){  
+        pipeComponent.description = `${longDescription} ${size}`          
         tees.push(pipeComponent)
     } else if (shortDescription.startsWith('REDUCER') || shortDescription.startsWith('COUPLING, REDUCING')) {
+        pipeComponent.description = `${longDescription} ${size}`
         reducers.push(pipeComponent)
     } else if (shortDescription.endsWith('OLET')){
+        pipeComponent.description = `${longDescription} ${size}`
         pipeComponent.spec = spec;
         olets.push(pipeComponent)
     } else if (shortDescription.endsWith('VALVE')){
@@ -63,9 +66,21 @@ pipeComponents.forEach(item => {
         pipeComponent.momentZ = pipeComponent.weight*z;           
         pipes.push(pipeComponent)
     } else{        
-				//console.log(pipeComponent)
+        pipeComponent.description = `${longDescription} ${size}`
+		console.log(pipeComponent.description)
         miscelanius.push(pipeComponent)
     }      
 })
+
+elbows.sort((actual, next) => actual.description <= next.description ? -1 : 1);
+flanges.sort((actual, next) => actual.description <= next.description ? -1 : 1);
+tees.sort((actual, next) => actual.description <= next.description ? -1 : 1);
+reducers.sort((actual, next) => actual.description <= next.description ? -1 : 1);
+olets.sort((actual, next) => actual.description <= next.description ? -1 : 1);
+valves.sort((actual, next) => actual.description <= next.description ? -1 : 1);
+pipes.sort((actual, next) => actual.description <= next.description ? -1 : 1);
+miscelanius.sort((actual, next) => actual.description <= next.description ? -1 : 1);
+unions.sort((actual, next) => actual.description <= next.description ? -1 : 1);
+
 
 export { elbows, flanges, tees, reducers, olets, valves, pipes, miscelanius, unions }
