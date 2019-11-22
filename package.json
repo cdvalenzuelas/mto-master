@@ -5,7 +5,7 @@
   "dependencies": {},
   "scripts": {
     "start": "babel-node index.js",
-    "prueba": "babel-node prueba.js"
+    "move": "mv MTO.xlsx spreadSheets"
   },
   "eslintConfig": {},
   "browserslist": {
